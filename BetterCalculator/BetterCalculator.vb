@@ -43,6 +43,7 @@ Module BetterCalculator
             Do While numOneLoop = False
                 Console.WriteLine(vbLf & "Choose a Number: ")
                 userInput = Console.ReadLine()
+                Console.WriteLine()
                 Try
                     numberOne = CInt(userInput)
                     Console.WriteLine($"You entered: {userInput}." & vbLf)
@@ -63,6 +64,7 @@ Module BetterCalculator
             Do While numTwoLoop = False
                 Console.WriteLine(vbLf & "Choose a Number: ")
                 userInput = Console.ReadLine()
+                Console.WriteLine()
                 Try
                     numberTwo = CInt(userInput)
                     Console.WriteLine($"You entered: {userInput}." & vbLf)
@@ -83,6 +85,7 @@ Module BetterCalculator
             Do While operationLoop = False
                 Console.WriteLine("Choose one of the following options:" & vbLf & "1. Add" & vbLf & "2. Subtract" & vbLf & "3.Multiply" & vbLf & "4. Divide")
                 userInput = Console.ReadLine()
+                Console.WriteLine()
                 Try
                     operation = CInt(userInput)
                     Select Case operation
