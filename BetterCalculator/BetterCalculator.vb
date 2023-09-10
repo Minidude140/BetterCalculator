@@ -18,6 +18,11 @@ Module BetterCalculator
         '[~]Ask user if they would like to multiply or divide thier input
         '[~]Return computated value
         '[~]Prompt to exit program
+        '[]Update prompts to submission instructions
+        '[]Add Loop and Quit Functionality
+        '[]Add try catch exeption
+        '[]Add subract and Divide operations
+
 
         Dim userInput As String
         Dim numberOne As Integer
