@@ -18,9 +18,11 @@ Module BetterCalculator
         '[~]Ask user if they would like to multiply or divide thier input
         '[~]Return computated value
         '[~]Prompt to exit program
-        '[]Update prompts to submission instructions
-        '[]Add Loop and Quit Functionality
-        '[]Add try catch exeption
+        '[~]Update prompts to submission instructions
+        '[1/2]Add Loop and Quit Functionality
+        '[~]Add try catch exeption number one
+        '[~]Add try catch exeption number two
+        '[]Add try catch exeption operation
         '[]Add subract and Divide operations
 
 
@@ -28,40 +30,74 @@ Module BetterCalculator
         Dim numberOne As Integer
         Dim numberTwo As Integer
         Dim operation As String
+        Dim exitFlag As Boolean = False
+        Dim numOneLoop As Boolean = False
+        Dim numTwoLoop As Boolean = False
+        Dim operationLoop As Boolean = False
 
-        'First Number Aquisition
-        Console.WriteLine("Please enter a number.")
-        userInput = Console.ReadLine()
-        Console.WriteLine($"You have entered {userInput}." & vbLf)
-        '*****WILL CRASH HERE IF INVALID CONVERSION********
-        numberOne = CInt(userInput)
+        Do While exitFlag = False
+            Console.WriteLine("Please enter two numbers." & vbLf & "Enter Q at anytime to quit.")
 
-        'Second Number Aquistion
-        Console.WriteLine("Please enter a second number.")
-        userInput = Console.ReadLine()
-        Console.WriteLine($"You have entered {numberOne} and {userInput}." & vbLf)
-        '*****WILL CRASH HERE IF INVALID CONVERSION********
-        numberTwo = CInt(userInput)
+            'First Number Aquisition
+            Do While numOneLoop = False
+                Console.WriteLine(vbLf & "Choose a Number: ")
+                userInput = Console.ReadLine()
+                Try
+                    numberOne = CInt(userInput)
+                    Console.WriteLine($"You entered: {userInput}." & vbLf)
+                    numOneLoop = True
+                Catch ex As Exception
+                    If userInput = "q" Or userInput = "Q" Then
+                        numOneLoop = True
+                        numTwoLoop = True
+                        operationLoop = True
+                        exitFlag = True
+                    Else
+                        Console.WriteLine($"You entered: {userInput}, please enter a whole number.")
+                    End If
+                End Try
+            Loop
 
-        'Prompt, Compute, and Return
-        Console.WriteLine("Would you like to add or multiply these two numbers?" & vbLf & "Please enter '+' or '*'")
-        userInput = Console.ReadLine()
-        [operation] = CStr(userInput)
+            'Second Number Aquistion
+            Do While numTwoLoop = False
+                Console.WriteLine(vbLf & "Choose a Number: ")
+                userInput = Console.ReadLine()
+                Try
+                    numberTwo = CInt(userInput)
+                    Console.WriteLine($"You entered: {userInput}." & vbLf)
+                    numTwoLoop = True
+                Catch ex As Exception
+                    If userInput = "q" Or userInput = "Q" Then
+                        numOneLoop = True
+                        numTwoLoop = True
+                        operationLoop = True
+                        exitFlag = True
+                    Else
+                        Console.WriteLine($"You entered: {userInput}, please enter a whole number.")
+                    End If
+                End Try
+            Loop
 
-        'Determine Desired Operation
-        If (operation = "+") Then
-            'Add
-            Console.WriteLine($"{numberOne} + {numberTwo} = {numberOne + numberTwo}" & vbLf)
-        ElseIf (operation = "*") Then
-            'Multiply
-            Console.WriteLine($"{numberOne} * {numberTwo} = {numberOne * numberTwo}" & vbLf)
-        Else
-            'not multiply or add
-            Console.WriteLine($"{numberOne} {userInput} {numberTwo} = ???" & vbLf & "I don't know that kind of math." & vbLf)
-        End If
+            [operation] = CStr(userInput)
 
-        'End greeting and exit
-        Console.WriteLine("Too much math for me, have a good day." & vbLf & "(Please press enter to exit)")
+            'Prompt, Compute, and Return
+            Console.WriteLine("Would you like to add or multiply these two numbers?" & vbLf & "Please enter '+' or '*'")
+            userInput = Console.ReadLine()
+
+            'Determine Desired Operation
+            If (operation = "+") Then
+                'Add
+                Console.WriteLine($"{numberOne} + {numberTwo} = {numberOne + numberTwo}" & vbLf)
+            ElseIf (operation = "*") Then
+                'Multiply
+                Console.WriteLine($"{numberOne} * {numberTwo} = {numberOne * numberTwo}" & vbLf)
+            Else
+                'not multiply or add
+                Console.WriteLine($"{numberOne} {userInput} {numberTwo} = ???" & vbLf & "I don't know that kind of math." & vbLf)
+            End If
+
+            'End greeting and exit
+        Loop
         Console.Read()
 
     End Sub
