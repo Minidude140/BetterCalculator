@@ -92,8 +92,21 @@ Module BetterCalculator
                             'Wrong input repeats loop
                         Case >= 5
                             Console.WriteLine($"You entered: {userInput}" & vbLf)
-                            'Input within range exit loop
+                            'Input indicates add then leave loop
                         Case = 1
+                            Console.WriteLine($"{numberOne} + {numberTwo} = {numberOne + numberTwo}" & vbLf)
+                            operationLoop = True
+                            'Input indicate subract then leave loop
+                        Case = 2
+                            Console.WriteLine($"{numberOne} - {numberTwo} = {numberOne - numberTwo}" & vbLf)
+                            operationLoop = True
+                            'Input indicates multiply then leave loop
+                        Case = 3
+                            Console.WriteLine($"{numberOne} * {numberTwo} = {numberOne * numberTwo}" & vbLf)
+                            operationLoop = True
+                            'input indicates divide then leave loop
+                        Case = 4
+                            Console.WriteLine($"{numberOne} / {numberTwo} = {numberOne / numberTwo}" & vbLf)
                             operationLoop = True
                             'Should not ever reach this point
                         Case Else
@@ -110,25 +123,8 @@ Module BetterCalculator
                     End If
                 End Try
             Loop
-            Select Case operation
-
-                     'Add two inputs
-                Case = 1
-                    Console.WriteLine($"{numberOne} + {numberTwo} = {numberOne + numberTwo}" & vbLf)
-                    'Subtract one from two
-                Case = 2
-                    Console.WriteLine($"{numberOne} - {numberTwo} = {numberOne - numberTwo}" & vbLf)
-                    'Multiply two inputs
-                Case = 3
-                    Console.WriteLine($"{numberOne} * {numberTwo} = {numberOne * numberTwo}" & vbLf)
-                    'Divide one from two
-                Case = 4
-                    Console.WriteLine($"{numberOne} / {numberTwo} = {numberOne / numberTwo}" & vbLf)
-                    'Should not run this cases oustide range handled in the about try/catch
-                Case Else
-                    Console.WriteLine("This should not have happened...")
-            End Select
         Loop Until exitFlag = True
+        'Exit Prompt
         Console.WriteLine("You entered: q")
         Console.WriteLine("Have a nice day." & vbLf & "Press enter to close this window.")
         Console.Read()
